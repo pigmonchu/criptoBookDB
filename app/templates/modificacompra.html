@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Modifica registro {% endblock %}
+{% block body %}
+<h1>Modifica registro</h1>
+    <p>Modifique los datos de la compra</p>
+    <form action="modificacompra" method="post">
+        <input hidden type="number" name="registroseleccionado" value="{{ registro['registroseleccionado']}}">
+        Fecha: <input type="date" name="fecha" id="fecha" value="{{ registro['fecha'] }}"><br/>
+        Hora: <input type="time" name="hora" id="hora" value="{{ registro['hora'] }}"><br/>
+        Concepto: <input type="text" name="descripcion" id="descripcion"  value="{{ registro['descripcion'] }}"><br/>
+        M. Comprada: <select name="monedaComprada" id="monedaComprada"  value="{{ registro['monedaComprada'] }}">
+            <option value="EUR">Euro</option>
+            <option value="BTC">Bitcoin</option>
+            <option value="ETH">Ethereum</option>
+            <option value="LTC">Litecoin</option>
+        </select>
+        Cantidad: <input type="number" name="cantidadComprada" id="cantidadComprada" step="0.001" value="{{ registro['cantidadComprada'] }}"><br/>
+        M. Pagada: <select name="monedaPagada" id="monedaPagada"  value="{{ registro['monedaPagada'] }}">
+            <option value="EUR">Euro</option>
+            <option value="BTC">Bitcoin</option>
+            <option value="ETH">Ethereum</option>
+            <option value="LTC">Litecoin</option>
+        </select>
+        Cantidad: <input type="number" name="cantidadPagada" id="cantidadPagada" step="0.001" value="{{ registro['cantidadPagada'] }}"><br/>
+        <input type="submit" value="Aceptar">
+    </form>
+{% endblock %}

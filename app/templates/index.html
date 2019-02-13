@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Criptobook {% endblock %}
+{% block body %}
+        <h1>Criptobook</h1>
+        <p>Listado de operaciones de compraventa de criptomonedas</p>
+        <form action="nuevacompra" method="get">
+            <table border="1">
+                <tr>
+                    <th>Sel.</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Descripción</th>
+                    <th>Moneda</th>
+                    <th>U. Compradas</th>
+                    <th>Moneda</th>
+                    <th>U.Pagadas</th>
+                </tr>
+                {% for movimiento in movimientos %}
+                <tr>
+                    <td><input type="radio" name="ix" value="{{ loop.index - 1}}"></td>
+                    <td>{{movimiento['fecha']}}</td>
+                    <td>{{movimiento['hora']}}</td>
+                    <td>{{movimiento['descripcion']}}</td>
+                    <td>{{movimiento['monedaComprada']}}</td>
+                    <td>{{movimiento['cantidadComprada']}}</td>
+                    <td>{{movimiento['monedaPagada']}}</td>
+                    <td>{{movimiento['cantidadPagada']}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <input name="btnselected" type="submit" value="Nueva">
+            <input name="btnselected" type="submit" value="Editar">
+        </form>
+{% endblock %}
